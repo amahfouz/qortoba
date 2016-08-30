@@ -31,11 +31,6 @@ Qortoba.prototype.callback = function(apiVersion, serviceName, methodName, param
 
 	var paramsDeserializedAsJson = JSON.parse(paramsArray);
 	
-	console.log("NO_SER:" + paramsArray.length);
-	console.log("DE_SER:" + paramsDeserializedAsJson.length);
-	
-	console.log("PARAMS: " + paramsDeserializedAsJson);
-	
 	method.apply(window, paramsDeserializedAsJson);
 };
 
@@ -43,6 +38,6 @@ Qortoba.prototype.callback = function(apiVersion, serviceName, methodName, param
 // Declare the qortoba global object 
 //
 
-console.log("QORTOBA: Loading the qortoba class.");
+console.log("QORTOBA: Loading qortoba.");
 
 window.qortoba = new Qortoba(1.0);

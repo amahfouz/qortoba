@@ -100,36 +100,40 @@
     // associate invocation with an instance
     
     [invocation setTarget:service];
+    [invocation setSelector:selector];
     
     // read and decode parameters array string
     
     NSString* queryStr = [url query];
-    NSData* queryData = [queryStr dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSError *jsonParseError = nil;
-    id jsonObject = [NSJSONSerialization JSONObjectWithData:queryData
-                                                    options:kNilOptions
-                                                      error:&jsonParseError];
-    
-    if (! [jsonObject isKindOfClass:[NSArray class]])
-        [NSException raise:@"Error invoking service."
-                    format:@"Query string not valid JSON array (%@).", queryStr];
-    
-    if (jsonParseError) {
-        NSLog(@"Error parsing service parameters string (%@).", queryStr);
-        return NO;
-    }
-    
-    // set the params on the invocation object
-    
-    NSArray* paramsArr = jsonObject;
-    NSString* param;
-    NSInteger paramIndex = 0;
-    for (param in paramsArr) {
-        // The +2 is because 0 and 1 are 'self' and '_cmd'
-        id paramObj = [paramsArr objectAtIndex:(paramIndex + 2)];
-        [invocation setArgument:&paramObj
-                        atIndex:paramIndex];
+    if (queryStr) {
+        NSData* queryData = [queryStr dataUsingEncoding:NSUTF8StringEncoding];
+        
+        NSError *jsonParseError = nil;
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:queryData
+                                                        options:kNilOptions
+                                                          error:&jsonParseError];
+        
+        if (! [jsonObject isKindOfClass:[NSArray class]])
+            [NSException raise:@"Error invoking service."
+                        format:@"Query string not valid JSON array (%@).", queryStr];
+        
+        if (jsonParseError) {
+            NSLog(@"Error parsing service parameters string (%@).", queryStr);
+            return NO;
+        }
+        
+        // set the params on the invocation object
+        
+        NSArray* paramsArr = jsonObject;
+        NSString* param;
+        NSInteger paramIndex = 0;
+        for (param in paramsArr) {
+            // The +2 is because 0 and 1 are 'self' and '_cmd'
+            id paramObj = [paramsArr objectAtIndex:(paramIndex + 2)];
+            [invocation setArgument:&paramObj
+                            atIndex:paramIndex];
+        }
     }
     
     // finally, invoke

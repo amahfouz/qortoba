@@ -68,7 +68,8 @@
     
     // extract service, action, and params
     
-    NSString* hostStr = [url host];
+    NSString* hostStrEncoded = [url host];
+    NSString* hostStr = [hostStrEncoded stringByRemovingPercentEncoding];
     NSArray* serviceAndAction = [hostStr componentsSeparatedByString:@"."];
     
     if ([serviceAndAction count] != 2) {
@@ -104,7 +105,7 @@
     
     // read and decode parameters array string
     
-    NSString* queryStr = [url query];
+    NSString* queryStr = [[url query] stringByRemovingPercentEncoding];
     
     if (queryStr) {
         NSData* queryData = [queryStr dataUsingEncoding:NSUTF8StringEncoding];
@@ -129,10 +130,13 @@
         NSString* param;
         NSInteger paramIndex = 0;
         for (param in paramsArr) {
+            id paramObj = [paramsArr objectAtIndex:paramIndex];
+            
             // The +2 is because 0 and 1 are 'self' and '_cmd'
-            id paramObj = [paramsArr objectAtIndex:(paramIndex + 2)];
             [invocation setArgument:&paramObj
-                            atIndex:paramIndex];
+                            atIndex:(paramIndex + 2)];
+            
+            paramIndex++;
         }
     }
     

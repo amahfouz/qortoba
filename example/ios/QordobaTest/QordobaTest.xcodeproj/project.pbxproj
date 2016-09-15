@@ -1,0 +1,310 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		833C23481D769B3E0069BC66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 833C23471D769B3E0069BC66 /* main.m */; };
+		833C234B1D769B3E0069BC66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 833C234A1D769B3E0069BC66 /* AppDelegate.m */; };
+		833C234E1D769B3E0069BC66 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833C234D1D769B3E0069BC66 /* ViewController.m */; };
+		833C23511D769B3E0069BC66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 833C234F1D769B3E0069BC66 /* Main.storyboard */; };
+		8349A1081D820BEA000A2419 /* Qortoba.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A1071D820BEA000A2419 /* Qortoba.m */; };
+		8349A10B1D8229F6000A2419 /* SampleService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A10A1D8229F6000A2419 /* SampleService.m */; };
+		8349A1111D833269000A2419 /* QortobaClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A10F1D833269000A2419 /* QortobaClient.m */; };
+		8349A11F1D833DD7000A2419 /* js in Resources */ = {isa = PBXBuildFile; fileRef = 8349A11E1D833DD7000A2419 /* js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		833C23431D769B3E0069BC66 /* QordobaTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QordobaTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		833C23471D769B3E0069BC66 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		833C23491D769B3E0069BC66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = QordobaTest/AppDelegate.h; sourceTree = "<group>"; };
+		833C234A1D769B3E0069BC66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = QordobaTest/AppDelegate.m; sourceTree = "<group>"; };
+		833C234C1D769B3E0069BC66 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = QordobaTest/ViewController.h; sourceTree = "<group>"; };
+		833C234D1D769B3E0069BC66 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = QordobaTest/ViewController.m; sourceTree = "<group>"; };
+		833C23501D769B3E0069BC66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		833C23571D769B3E0069BC66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = QordobaTest/Info.plist; sourceTree = "<group>"; };
+		8349A1061D820BEA000A2419 /* Qortoba.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Qortoba.h; path = ../../../src/ios/Qortoba.h; sourceTree = "<group>"; };
+		8349A1071D820BEA000A2419 /* Qortoba.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Qortoba.m; path = ../../../src/ios/Qortoba.m; sourceTree = "<group>"; };
+		8349A1091D8229F6000A2419 /* SampleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleService.h; sourceTree = "<group>"; };
+		8349A10A1D8229F6000A2419 /* SampleService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleService.m; sourceTree = "<group>"; };
+		8349A10F1D833269000A2419 /* QortobaClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QortobaClient.m; path = ../../../src/ios/QortobaClient.m; sourceTree = "<group>"; };
+		8349A1101D833269000A2419 /* QortobaClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QortobaClient.h; path = ../../../src/ios/QortobaClient.h; sourceTree = "<group>"; };
+		8349A11E1D833DD7000A2419 /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; name = js; path = ../../../src/js; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		833C23401D769B3E0069BC66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		833C233A1D769B3E0069BC66 = {
+			isa = PBXGroup;
+			children = (
+				8349A11E1D833DD7000A2419 /* js */,
+				8349A1061D820BEA000A2419 /* Qortoba.h */,
+				8349A1071D820BEA000A2419 /* Qortoba.m */,
+				8349A10F1D833269000A2419 /* QortobaClient.m */,
+				8349A1101D833269000A2419 /* QortobaClient.h */,
+				833C23491D769B3E0069BC66 /* AppDelegate.h */,
+				833C234A1D769B3E0069BC66 /* AppDelegate.m */,
+				833C234C1D769B3E0069BC66 /* ViewController.h */,
+				833C234D1D769B3E0069BC66 /* ViewController.m */,
+				8349A1091D8229F6000A2419 /* SampleService.h */,
+				8349A10A1D8229F6000A2419 /* SampleService.m */,
+				833C234F1D769B3E0069BC66 /* Main.storyboard */,
+				833C23571D769B3E0069BC66 /* Info.plist */,
+				833C23461D769B3E0069BC66 /* Supporting Files */,
+				833C23441D769B3E0069BC66 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		833C23441D769B3E0069BC66 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				833C23431D769B3E0069BC66 /* QordobaTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		833C23461D769B3E0069BC66 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				833C23471D769B3E0069BC66 /* main.m */,
+			);
+			name = "Supporting Files";
+			path = QordobaTest;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		833C23421D769B3E0069BC66 /* QordobaTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 833C235A1D769B3E0069BC66 /* Build configuration list for PBXNativeTarget "QordobaTest" */;
+			buildPhases = (
+				833C233F1D769B3E0069BC66 /* Sources */,
+				833C23401D769B3E0069BC66 /* Frameworks */,
+				833C23411D769B3E0069BC66 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QordobaTest;
+			productName = QordobaTest;
+			productReference = 833C23431D769B3E0069BC66 /* QordobaTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		833C233B1D769B3E0069BC66 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Ayman Mahfouz";
+				TargetAttributes = {
+					833C23421D769B3E0069BC66 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 833C233E1D769B3E0069BC66 /* Build configuration list for PBXProject "QordobaTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 833C233A1D769B3E0069BC66;
+			productRefGroup = 833C23441D769B3E0069BC66 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				833C23421D769B3E0069BC66 /* QordobaTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		833C23411D769B3E0069BC66 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8349A11F1D833DD7000A2419 /* js in Resources */,
+				833C23511D769B3E0069BC66 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		833C233F1D769B3E0069BC66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8349A1081D820BEA000A2419 /* Qortoba.m in Sources */,
+				8349A1111D833269000A2419 /* QortobaClient.m in Sources */,
+				833C234E1D769B3E0069BC66 /* ViewController.m in Sources */,
+				8349A10B1D8229F6000A2419 /* SampleService.m in Sources */,
+				833C234B1D769B3E0069BC66 /* AppDelegate.m in Sources */,
+				833C23481D769B3E0069BC66 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		833C234F1D769B3E0069BC66 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				833C23501D769B3E0069BC66 /* Base */,
+			);
+			name = Main.storyboard;
+			path = QordobaTest;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		833C23581D769B3E0069BC66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		833C23591D769B3E0069BC66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		833C235B1D769B3E0069BC66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = QordobaTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mahfouz.QortobaTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		833C235C1D769B3E0069BC66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = QordobaTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mahfouz.QortobaTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		833C233E1D769B3E0069BC66 /* Build configuration list for PBXProject "QordobaTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				833C23581D769B3E0069BC66 /* Debug */,
+				833C23591D769B3E0069BC66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		833C235A1D769B3E0069BC66 /* Build configuration list for PBXNativeTarget "QordobaTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				833C235B1D769B3E0069BC66 /* Debug */,
+				833C235C1D769B3E0069BC66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 833C233B1D769B3E0069BC66 /* Project object */;
+}

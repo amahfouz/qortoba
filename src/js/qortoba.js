@@ -6,7 +6,7 @@ function Qortoba(apiVersion) {
 // Callled externally (from outside JavaScript)
 //
 
-Qortoba.prototype.callback = function(apiVersion, serviceName, methodName, paramsArray) {
+Qortoba.prototype.callback = function(apiVersion, serviceName, methodName, paramsArrayJson) {
 
     // get the global injector, expects an ng-app definition
 
@@ -19,7 +19,7 @@ Qortoba.prototype.callback = function(apiVersion, serviceName, methodName, param
 
 	var service = injector.get(serviceName);
 	if (! service) {
-		console.log('WARAN: Angular service $service_name not found.');
+		console.log('WARN: Angular service $service_name not found.');
 		return;
 	}
 
@@ -29,9 +29,9 @@ Qortoba.prototype.callback = function(apiVersion, serviceName, methodName, param
 		return;		
 	}
 
-	var paramsDeserializedAsJson = JSON.parse(paramsArray);
+	var paramsArray = JSON.parse(paramsArrayJson);
 	
-	method.apply(window, paramsDeserializedAsJson);
+	method.apply(window, paramsArray);
 };
 
 //

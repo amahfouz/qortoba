@@ -12,16 +12,28 @@ angular.module('qortoba', [])
 	return {
 		
 		exec : function(service, action, argsArr) {
-			
-			// Encode the params as a JSON array 
-
-			var encodedParams = JSON.stringify(argsArr);
 
 			// Call to native iOS is done via naigation
 			// to a URL that encodes the action and params
 
-			var url = 'qortoba' + '://' service + '.' action + '?' + encodedParams;
+			// URI-encode the action as it is an objective-C selector
+			// that may contain ':'
+
+			var url = 'qortoba' + '://' + service + '.' + encodeURIComponent(action);
+
+			// check if there are arguments
+
+			if (argsArr) {
+				
+				// Encode the params as a JSON array 	
+
+				var encodedParams = JSON.stringify(argsArr);				
+
+				url = url + '?' + encodedParams; 
+			}
 			
+			// "navigate" to the action
+
 			document.location.href = url;
 		}
 	};

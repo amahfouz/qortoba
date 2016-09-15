@@ -4,10 +4,10 @@ angular.module("example", ['qortoba'])
 	
 	return {
 		action1 : function() {
-			QortobaService.exec("sample", "action1", null);
+			QortobaService.exec("sample", "action1:", null);
 		},
 		action2 : function(param1, param2) {
-			QortobaService.exec("sample", "action2", [param1, param2]]);
+			QortobaService.exec("sample", "action2:withParam2:", [param1, param2]);
 		}		
 	};
 });

@@ -1,9 +1,13 @@
+//
+// Class which handles calls from native code
+//
+
 function Qortoba(apiVersion) {
 	this.apiVersion = apiVersion;
 }
 
 //
-// Callled externally (from outside JavaScript)
+// Called externally (from outside JavaScript)
 //
 
 Qortoba.prototype.callback = function(apiVersion, serviceName, methodName, paramsArrayJson) {

@@ -1,6 +1,17 @@
 
 //
-// iOS specific service to call Objective-C / Swift code from JavaScript
+// iOS specific service to call Objective-C / Swift code
+// from JavaScript
+//
+
+//
+// Invokes an Objective-C selector by navigating to a URL of
+// the form:
+//
+//    qortoba://<service_name>.<selector_name>?<encoded_args_array>
+//
+// The navigation is supposed to be intercepted by the delegate
+// of the corresponding UIView and routed to Qortoba for handling
 //
 
 angular.module('qortoba', [])
@@ -16,8 +27,8 @@ angular.module('qortoba', [])
 			// Call to native iOS is done via naigation
 			// to a URL that encodes the action and params
 
-			// URI-encode the action as it is an objective-C selector
-			// that may contain ':'
+			// URI-encode the action which is an identifier
+            // for an objective-C selector excluding the ':'
 
 			var url = 'qortoba' + '://' + service + '.' + encodeURIComponent(action);
 

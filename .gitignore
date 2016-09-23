@@ -38,3 +38,5 @@ jspm_packages
 
 # iOS
 .DS_Store
+*.xcuserstate
+*.xcsettings

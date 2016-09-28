@@ -56,7 +56,7 @@
     NSURL* url = [NSURL fileURLWithPath:[[NSBundle mainBundle]
                                          pathForResource:@"index"
                                          ofType:@"html"
-                                         inDirectory:@"js"]
+                                         inDirectory:@"www"]
                             isDirectory:NO];
     
     NSLog(@"Loading index.html.");

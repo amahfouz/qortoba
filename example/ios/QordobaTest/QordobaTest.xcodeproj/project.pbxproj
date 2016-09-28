@@ -13,8 +13,8 @@
 		833C23511D769B3E0069BC66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 833C234F1D769B3E0069BC66 /* Main.storyboard */; };
 		8349A1081D820BEA000A2419 /* Qortoba.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A1071D820BEA000A2419 /* Qortoba.m */; };
 		8349A1111D833269000A2419 /* QortobaClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A10F1D833269000A2419 /* QortobaClient.m */; };
-		8349A11F1D833DD7000A2419 /* js in Resources */ = {isa = PBXBuildFile; fileRef = 8349A11E1D833DD7000A2419 /* js */; };
 		83D928DC1D951605009B5970 /* SampleService.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D928DB1D951605009B5970 /* SampleService.m */; };
+		83D928DF1D9B8F09009B5970 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 83D928DE1D9B8F09009B5970 /* www */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,9 +30,9 @@
 		8349A1071D820BEA000A2419 /* Qortoba.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Qortoba.m; path = ../../../src/ios/Qortoba.m; sourceTree = "<group>"; };
 		8349A10F1D833269000A2419 /* QortobaClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QortobaClient.m; path = ../../../src/ios/QortobaClient.m; sourceTree = "<group>"; };
 		8349A1101D833269000A2419 /* QortobaClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QortobaClient.h; path = ../../../src/ios/QortobaClient.h; sourceTree = "<group>"; };
-		8349A11E1D833DD7000A2419 /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; name = js; path = ../../../src/js; sourceTree = "<group>"; };
 		83D928DA1D951605009B5970 /* SampleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleService.h; path = QordobaTest/SampleService.h; sourceTree = "<group>"; };
 		83D928DB1D951605009B5970 /* SampleService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SampleService.m; path = QordobaTest/SampleService.m; sourceTree = "<group>"; };
+		83D928DE1D9B8F09009B5970 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../../build/www; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +49,7 @@
 		833C233A1D769B3E0069BC66 = {
 			isa = PBXGroup;
 			children = (
-				8349A11E1D833DD7000A2419 /* js */,
+				83D928DE1D9B8F09009B5970 /* www */,
 				8349A1061D820BEA000A2419 /* Qortoba.h */,
 				8349A1071D820BEA000A2419 /* Qortoba.m */,
 				8349A10F1D833269000A2419 /* QortobaClient.m */,
@@ -141,7 +141,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8349A11F1D833DD7000A2419 /* js in Resources */,
+				83D928DF1D9B8F09009B5970 /* www in Resources */,
 				833C23511D769B3E0069BC66 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

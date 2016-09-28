@@ -14,7 +14,6 @@
 
 -(void)action1;
 
--(void)action2:(NSString*)param1
-    withParam2:(NSString*)param2;
+-(void)action2:(NSArray*)params;
     
 @end

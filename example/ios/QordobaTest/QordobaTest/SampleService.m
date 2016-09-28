@@ -19,10 +19,9 @@
     NSLog(@"action 1 invoked.");
 }
 
--(void)action2:(NSString*)param1
-    withParam2:(NSString*)param2 {
+-(void)action2:(NSArray*)params {
     
-    NSLog(@"action 2 invoked with params (%@ , %@).", param1, param2);
+    NSLog(@"action 2 invoked with params (%@ , %@).", [params objectAtIndex:0], [params objectAtIndex:1]);
 }
 
 @end

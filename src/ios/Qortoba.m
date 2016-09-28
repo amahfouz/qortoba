@@ -86,12 +86,11 @@
         [NSException raise:@"Error invoking service."
                     format:@"Service not found for name (%@).", serviceName];
     
-    SEL selector = NSSelectorFromString(actionName);
+    SEL selector = NSSelectorFromString([actionName stringByAppendingString:@":"]);
     
     if (! selector)
         [NSException raise:@"Error invoking action."
                     format:@"Action not found for name (%@).", actionName];
-    
     
     // find the selector and create an invocation
     
@@ -127,17 +126,21 @@
         // set the params on the invocation object
         
         NSArray* paramsArr = jsonObject;
-        NSString* param;
-        NSInteger paramIndex = 0;
-        for (param in paramsArr) {
-            id paramObj = [paramsArr objectAtIndex:paramIndex];
-            
-            // The +2 is because 0 and 1 are 'self' and '_cmd'
-            [invocation setArgument:&paramObj
-                            atIndex:(paramIndex + 2)];
-            
-            paramIndex++;
-        }
+        
+        // The +2 is because 0 and 1 are 'self' and '_cmd'
+        [invocation setArgument:&paramsArr atIndex:2];
+        
+//        NSString* param;
+//        NSInteger paramIndex = 0;
+//        for (param in paramsArr) {
+//            id paramObj = [paramsArr objectAtIndex:paramIndex];
+//            
+//            // The +2 is because 0 and 1 are 'self' and '_cmd'
+//            [invocation setArgument:&paramObj
+//                            atIndex:(paramIndex + 2)];
+//            
+//            paramIndex++;
+//        }
     }
     
     // finally, invoke

@@ -1,0 +1,33 @@
+{
+  "name": "qortoba",
+  "version": "1.0.0",
+  "description": "Mini-Cordova for Android and iOS",
+  "main": "GulpFile.js",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {
+    "esprima": "^3.0.0",
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amahfouz/qortoba.git"
+  },
+  "keywords": [
+    "cordova",
+    "iOS",
+    "Android",
+    "JavaScript"
+  ],
+  "author": "Ayman Mahfouz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amahfouz/qortoba/issues"
+  },
+  "homepage": "https://github.com/amahfouz/qortoba#readme"
+}

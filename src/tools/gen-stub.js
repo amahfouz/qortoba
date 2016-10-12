@@ -21,7 +21,7 @@ fs.readFile(process.argv[2], 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
-  console.log(JSON.stringify(esprima.parse(data), null, 4));
+  //console.log(JSON.stringify(esprima.parse(data), null, 4));
 
   // verify the syntax of the program
   verifyProgram(esprima.parse(data));
@@ -39,7 +39,13 @@ function verifyProgram(astRoot) {
     assert(astRoot.type == "Program", "Invalid program file.");
     verifyBody(astRoot.body);
 
-    console.log(escodegen.generate(astRoot));
+    var genOptions = { 
+        format : { 
+            compact : true 
+        }, 
+        comment : true
+    };
+    console.log(escodegen.generate(astRoot,  ));
 }
 
 function verifyBody(body) {
@@ -106,6 +112,7 @@ function verifyClassPrototypeProperty(protoProp) {
     assert(protoProp.property.name == "prototype", "Expected 'prototype'.");
 }
 
+// add the function body
 function instrumentRightSide(right, funcName) {
     assert(right.type == "FunctionExpression", "Expected function expressiont.");
     assert(right.params, "Expected params.");
@@ -120,7 +127,7 @@ function instrumentRightSide(right, funcName) {
         params.forEach(function(val, index, arr) {
             newCode = newCode + val.name;
             if (index < arr.length - 1)
-                newCode = newCode + ", ";
+                newCode = newCode + ",";
         });
         newCode = newCode + "]";
     }
@@ -128,6 +135,8 @@ function instrumentRightSide(right, funcName) {
         newCode = newCode + "null";
     }
     newCode = newCode + ");";
+
+    console.log(newCode);
 
     // insert the new code
 

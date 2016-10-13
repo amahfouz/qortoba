@@ -53,7 +53,8 @@ function verifyBody(body) {
     assert(body.length > 1, "Must declare constructor and at least one function.");
     
     var ctr = body[0];
-    verifyConstructor(ctr);
+    assert(ctr);
+    assert(ctr.type == "FunctionDeclaration", "Invalid constructor function.")
 
     var id = ctr.id;
     assert(id.type == "Identifier", "Expected identifier.");
@@ -66,11 +67,6 @@ function verifyBody(body) {
     body.slice(1).forEach(function(value) {
         verifyPrototypeDecl(value);    
     });
-}
-
-function verifyConstructor(ctr) {
-    assert(ctr);
-    assert(ctr.type == "FunctionDeclaration", "Invalid constructor function.")
 }
 
 function verifyPrototypeDecl(decl) {

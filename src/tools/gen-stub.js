@@ -4,9 +4,7 @@
 //
 
 var fs = require('fs');
-var assert = require('assert');
-var esprima = require('esprima');
-var escodegen = require('escodegen');
+var JsClassParser = require('./js-class-parser');
 
 // Parse command line
 
@@ -24,118 +22,60 @@ fs.readFile(process.argv[2], 'utf8', function (err,data) {
   //console.log(JSON.stringify(esprima.parse(data), null, 4));
 
   // verify the syntax of the program
-  verifyProgram(esprima.parse(data));
-});
+  var declsAsJson = new JsClassParser(data);  
 
-//
-// Functions to generate the stub.
-//
-// Top down traversal of the program
-// tree verifying syntax
-//
+  console.log(JSON.stringify(declsAsJson));
 
-function verifyProgram(astRoot) {
-    assert(astRoot);
-    assert(astRoot.type == "Program", "Invalid program file.");
-    verifyBody(astRoot.body);
+  var className = declsAsJson.className;
+  var prog = "function " + className + "() { }";
 
-    var genOptions = { 
-        format : { 
-            compact : true 
-        }, 
-        comment : true
-    };
-    console.log(escodegen.generate(astRoot,  ));
-}
+  function commaSeparatedParams(paramsArr) {
+        if (! paramsArr)
+            return null;
 
-function verifyBody(body) {
-    assert(body);
-    assert(body.length > 1, "Must declare constructor and at least one function.");
-    
-    var ctr = body[0];
-    assert(ctr);
-    assert(ctr.type == "FunctionDeclaration", "Invalid constructor function.")
-
-    var id = ctr.id;
-    assert(id.type == "Identifier", "Expected identifier.");
-
-    // record the name of the class 
-
-    global.theClassName = id.name;
-
-    // the rest of the body should be additions of functions to prototype 
-    body.slice(1).forEach(function(value) {
-        verifyPrototypeDecl(value);    
-    });
-}
-
-function verifyPrototypeDecl(decl) {
-    assert(decl, "No prototype decl found.");
-    assert(decl.type == "ExpressionStatement", "Invalid expression.");
-    verifyExpression(decl.expression);
-}
-
-function verifyExpression(expr) {
-    
-    assert(expr.operator == "=", "Invalid operator.");
-    assert(expr.type, "AssignmentExpression");
-    
-    var funcName = verifyLeftSide(expr.left);
-    instrumentRightSide(expr.right, funcName);
-}
-
-function verifyLeftSide(left) {
-    assert(left.type == "MemberExpression");
-    verifyClassPrototypeProperty(left.object);
-    assert(left.property);
-    assert(left.property.type == "Identifier", "Expected identifier.");
-    
-    var funcName = left.property.name;
-    assert(funcName);
-
-    return funcName;
-}
-
-function verifyClassPrototypeProperty(protoProp) {
-    assert(protoProp.type == "MemberExpression");
-    var obj = protoProp.object;
-
-    assert(obj);
-    assert(obj.type == "Identifier", "Expected identifier.");
-    assert(obj.name == global.theClassName, "Incorrect classname: " + obj.name);
-    assert(protoProp.property);
-    assert(protoProp.property.type == "Identifier", "Expected 'prototype'.");
-    assert(protoProp.property.name == "prototype", "Expected 'prototype'.");
-}
-
-// add the function body
-function instrumentRightSide(right, funcName) {
-    assert(right.type == "FunctionExpression", "Expected function expressiont.");
-    assert(right.params, "Expected params.");
-
-    // construct the new function body
-
-    var newCode = "QortobaService.exec(\"" + theClassName + "\", \"" + funcName + "\", ";
-    var params = right.params;
-
-    if (params) {
-        newCode = newCode + "[";
-        params.forEach(function(val, index, arr) {
-            newCode = newCode + val.name;
+        // non-null params
+        var result = "";
+        paramsArr.forEach(function(param, index, arr) {
+            result = result + param;
             if (index < arr.length - 1)
-                newCode = newCode + ",";
-        });
-        newCode = newCode + "]";
-    }
-    else {
-        newCode = newCode + "null";
-    }
-    newCode = newCode + ");";
+                result = result + ",";
+        });    
+        return result;
+  }
 
-    console.log(newCode);
+  declsAsJson.funcDecls.forEach(function(decl) {
 
-    // insert the new code
+        var funcName = decl.name;
+        var csParams = commaSeparatedParams(decl.params);
 
-    right.body.body.push(esprima.parse(newCode));
-}
+        prog = prog + "\n";
+        prog = prog + className + ".prototype." + funcName + " = function(";
+
+        // add formal arguments
+
+        if (csParams)
+            prog = prog + csParams;
+     
+        prog = prog + ") {\n";
+
+        // append the Qortoba call
+
+        var newCode = "    QortobaService.exec('" + className + "', '" + funcName + "', ";
+
+        if (csParams) {
+            newCode = newCode + "[";
+            newCode = newCode + csParams;
+            newCode = newCode + "]";
+        }
+        else {
+            newCode = newCode + "null";
+        }
+        newCode = newCode + ");";
+
+        prog = prog + newCode + '\n}'
+      });
+  
+  console.log(prog);
+
+});
 

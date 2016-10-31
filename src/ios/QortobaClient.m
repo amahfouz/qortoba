@@ -81,4 +81,10 @@ static NSString *const INVOCATION_TEMPLATE
     [theWebView stringByEvaluatingJavaScriptFromString:js];
 }
 
+-(void)injectObject:(NSObject*)object
+           withName:(NSString*)name {
+
+    // TODO
+}
+
 @end

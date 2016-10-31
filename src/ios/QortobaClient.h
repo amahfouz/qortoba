@@ -32,4 +32,11 @@
              byName:(NSString*)actionName
          withParams:(NSArray*)params;
 
+/*!
+  @brief Injects an object into JavaScript
+ */
+
+-(void)injectObject:(NSObject*)object
+           withName:(NSString*)name;
+
 @end

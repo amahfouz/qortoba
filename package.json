@@ -11,7 +11,7 @@
     "escodegen": "^1.8.1",
     "esprima": "^3.0.0",
     "gulp": "^3.9.1",
-    "mustache": "^2.2.1"
+    "handlebars": "^4.0.5",
   },
   "devDependencies": {},
   "scripts": {

@@ -11,9 +11,12 @@
     "escodegen": "^1.8.1",
     "esprima": "^3.0.0",
     "gulp": "^3.9.1",
-    "handlebars": "^4.0.5",
+    "gulp-javac": "^0.1.7",
+    "handlebars": "^4.0.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-javac": "^0.1.7"
+  },
   "scripts": {
     "test": "test"
   },

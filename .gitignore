@@ -43,3 +43,8 @@ jspm_packages
 .DS_Store
 *.xcuserstate
 *.xcsettings
+
+#Android
+gen
+res
+assets

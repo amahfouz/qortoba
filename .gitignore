@@ -47,4 +47,5 @@ jspm_packages
 #Android
 gen
 res
-assets
+bin
+

@@ -12,7 +12,7 @@
     @brief Template for JavaScript to be filled and passed to the web view
  */
 static NSString *const INVOCATION_TEMPLATE
-    = @"qortoba.callback(1.0, \"wl-service-name\", \"wl-method-name\", 'wl-params-array');";
+    = @"qortoba.angular(\"wl-service-name\", \"wl-method-name\", 'wl-params-array');";
 
 @implementation QortobaClient {
     UIWebView* theWebView;

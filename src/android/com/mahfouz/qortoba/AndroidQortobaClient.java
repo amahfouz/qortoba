@@ -2,8 +2,6 @@ package com.mahfouz.qortoba;
 
 import org.json.JSONArray;
 
-import com.mahfouz.qortoba.internal.QortobaInvocation;
-
 import android.webkit.WebView;
 
 /**
@@ -11,9 +9,7 @@ import android.webkit.WebView;
  *
  * Invokes arbitrary angular service method on an Android WebView.
  */
-public final class AndroidQortobaClient {
-
-	private static final String LOG_TAG = "QORTOBA";
+public final class AndroidQortobaClient implements QortobaClient {
 
 	private final WebView webView;
 	private final AndroidWebView wrapper;
@@ -26,9 +22,27 @@ public final class AndroidQortobaClient {
 		this.wrapper = new AndroidWebView();
 	}
 
-	public void invoke(String serviceName, String methodName, JSONArray params) {
-		QortobaInvocation inv = new QortobaInvocation
-			(serviceName, methodName, params != null ? params.toString() : null);
+	public void invoke(String serviceName,
+	                   String methodName,
+	                   Object[] objParams) {
+
+        final String serializedParams;
+
+        if (objParams != null) {
+            JSONArray jsonAr = new JSONArray();
+
+            for (Object arg : objParams) {
+                jsonAr.put(arg.toString());
+            }
+
+            serializedParams = jsonAr.toString();
+        }
+        else
+            serializedParams = null;
+
+		QortobaAngularInvocation inv = new QortobaAngularInvocation
+			(serviceName, methodName, serializedParams);
+
 		inv.invoke(wrapper);
 	}
 
@@ -36,7 +50,7 @@ public final class AndroidQortobaClient {
 	/**
 	 * Wraps an Android WebView for passing to a QortobaInvocation.
 	 */
-	private final class AndroidWebView implements QortobaInvocation.WebView {
+	private final class AndroidWebView implements QortobaAngularInvocation.WebView {
 
 		@Override
 		public void runJavaScript(String jsString) {

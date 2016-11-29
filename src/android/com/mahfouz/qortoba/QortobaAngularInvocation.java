@@ -1,4 +1,4 @@
-package com.mahfouz.qortoba.internal;
+package com.mahfouz.qortoba;
 
 /**
  * Platform-independent invocation of Qortoba.
@@ -6,15 +6,17 @@ package com.mahfouz.qortoba.internal;
  * Invocation specified using an (angular) service name, a method
  * name (of the service) and params (specified as an array serialized
  * as a String in the form "[param1, param2, param3]").
+ *
+ * Package protected. Internal use only.
  */
-public final class QortobaInvocation {
+final class QortobaAngularInvocation {
 
 	private static final String SERVICE_PLACEHOLDER = "wl-service_name";
 	private static final String METHOD_PLACEHOLDER = "wl-method_name";
 	private static final String PARAMS_PLACEHOLDER = "wl-params_array";
 
 	private static final String INVOCATION_JS_STR
-		= "qortoba.callback(1.0, "
+		= "qortoba.angular("
 		    + "\"wl-service_name\", "
 		    + "\"wl-method_name\", "
 		    + "\"wl-params_array\");";
@@ -23,9 +25,9 @@ public final class QortobaInvocation {
 	private final String methodName;
 	private final String paramsArrStr;
 
-	public QortobaInvocation(String serviceName,
-							 String methodName,
-							 String paramsArrIfAny) {
+	public QortobaAngularInvocation(String serviceName,
+	                                String methodName,
+	                                String paramsArrIfAny) {
 
 		if (serviceName == null || methodName == null)
 			throw new IllegalArgumentException();

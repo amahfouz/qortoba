@@ -1,9 +1,7 @@
 package com.mahfouz.qortoba.test;
 
-import org.json.JSONArray;
-
 import com.mahfouz.qortoba.AndroidQortobaClient;
-import com.mahfouz.qortoba.QortobaJsProxy;
+import com.mahfouz.qortoba.QortobaAngularProxy;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -37,14 +35,11 @@ public final class MainActivity extends Activity {
 
                 // invoke using the client
 
-                JSONArray jsonAr = new JSONArray();
-                jsonAr.put("Hello!");
-
-                client.invoke("AlertService", "show", jsonAr);
+                client.invoke("AlertService", "show", new Object[] {"Hello!"});
 
                 // invoke via dynamic proxy
 
-                AlertServiceJsApi alertApi = QortobaJsProxy.create
+                AlertServiceJsApi alertApi = QortobaAngularProxy.create
                     (AlertServiceJsApi.class, "AlertService", webView);
 
                 alertApi.show("Go proxy!");

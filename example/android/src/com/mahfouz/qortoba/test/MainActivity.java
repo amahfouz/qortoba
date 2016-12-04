@@ -1,7 +1,7 @@
 package com.mahfouz.qortoba.test;
 
-import com.mahfouz.qortoba.AndroidQortobaClient;
-import com.mahfouz.qortoba.QortobaAngularProxy;
+import com.mahfouz.qortoba.AndroidQortobaWebView;
+import com.mahfouz.qortoba.QortobaAngularServiceProxy;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -30,19 +30,18 @@ public final class MainActivity extends Activity {
 
             	Log.w("QORTOBA", "Page load done!");
 
-                AndroidQortobaClient client
-                    = new AndroidQortobaClient(webView);
+                AndroidQortobaWebView wrappedWebView
+                    = new AndroidQortobaWebView(webView);
 
-                // invoke using the client
+                // create Angular service proxy
 
-                client.invoke("AlertService", "show", new Object[] {"Hello!"});
+                AlertServiceJsApi serviceProxy
+                    = QortobaAngularServiceProxy.create
+                    (AlertServiceJsApi.class, "AlertService", wrappedWebView);
 
-                // invoke via dynamic proxy
+                // invoke using the proxy
 
-                AlertServiceJsApi alertApi = QortobaAngularProxy.create
-                    (AlertServiceJsApi.class, "AlertService", webView);
-
-                alertApi.show("Go proxy!");
+                serviceProxy.show("Hello!");
             }
         });
 
@@ -66,15 +65,18 @@ public final class MainActivity extends Activity {
 
 	private final class Test {
 
-//		@JavascriptInterface
-//		public void show(String message) {
-//			Log.w("QORDOBA", message);
-//		}
-
 		@JavascriptInterface
 		public void greet(String name) {
 			Log.w("QORDOBA", "Greetings" + name);
 		}
 
+	}
+
+	/**
+	 * API of the alert service used for generating dynamic proxxy.
+	 */
+	public interface AlertServiceApi {
+
+	    void show(String message);
 	}
 }

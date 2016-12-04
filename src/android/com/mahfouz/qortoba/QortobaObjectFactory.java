@@ -1,19 +1,22 @@
 package com.mahfouz.qortoba;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
  * Factory for Java objects that proxy JavaScript objects.
  */
-public final class QortobaObjectFactory {
+public final class QortobaObjectFactory  {
 
     /** Qortoba client for JavaScript invocation */
-    private final QortobaClient jsClient;
+    private final QortobaProxy proxy;
+    private final ObjectPeerCallback objPeerCallback;
 
-    public QortobaObjectFactory(QortobaClient client) {
-        this.jsClient = client;
+    public QortobaObjectFactory(QortobaWebView webView) {
+        if (webView == null)
+            throw new IllegalArgumentException();
+
+        this.proxy = new QortobaProxy(webView);
+        this.objPeerCallback = new ObjectPeerCallback();
     }
 
     /**
@@ -25,41 +28,45 @@ public final class QortobaObjectFactory {
      * constructor function with the specified name
      * and arguments is defined at the global level.
      */
+    @SuppressWarnings("unchecked")
     public <T> T create(Class<T> api,
                         String className,
                         Object[] constructorArgs) {
 
-        callJsToCreateTheObject();
+        // instantiate object on the JavaScript side
+        QortobaJsObjId newObjId = QortobaJsObjId.create();
 
-        @SuppressWarnings("unchecked")
+        proxy.instantiate(newObjId, className, constructorArgs);
+
         return (T) Proxy.newProxyInstance
             (api.getClassLoader(),
             new Class[] { api },
-            new InvocHandler());
+            new QortobaObjectPeer(newObjId, objPeerCallback));
 
     }
 
-    private final class InvocHandler implements InvocationHandler {
+    //
+    // Nested
+    //
 
-        @Override
-        public Object invoke(Object proxy, Method method, Object[] args)
-            throws Throwable {
-
-            QortobaObjectProxy objProxy = (QortobaObjectProxy) proxy;
-
-            jsClient.invoke
-                (objProxy.getJsObjtId().toString(), method.getName(), args);
-
-            return null;
-        }
-
-    }
-
-    private final class Destroyer implements QortobaObjectProxy.Destructor {
+    /**
+     * Implements the peer object callback allowing objects
+     * to invoke methods on JavaScript peers and destroy them.
+     */
+    private final class ObjectPeerCallback
+        implements QortobaObjectPeer.Callback {
 
         @Override
         public void release(QortobaJsObjId objectId) {
-            callJsServiceToCreateObject();
+            proxy.destroy(objectId);
+        }
+
+        @Override
+        public void invoke(QortobaJsObjId objId,
+                           String methodName,
+                           Object[] args) {
+
+            proxy.invoke(objId, methodName, args);
         }
     }
 }

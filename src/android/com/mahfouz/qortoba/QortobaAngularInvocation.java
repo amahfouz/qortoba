@@ -9,6 +9,7 @@ package com.mahfouz.qortoba;
  *
  * Package protected. Internal use only.
  */
+@Deprecated
 final class QortobaAngularInvocation {
 
 	private static final String SERVICE_PLACEHOLDER = "wl-service_name";
@@ -61,11 +62,10 @@ final class QortobaAngularInvocation {
 		webView.runJavaScript(withParams);
 	}
 
-	//
-	// Abstracts a web view
-	//
-
-	public interface WebView {
-		void runJavaScript(String jsString);
-	}
+    /**
+     * Abstracts a WebView for the purpose of running JS.
+     */
+    public interface WebView {
+        void runJavaScript(String jsString);
+    }
 }
